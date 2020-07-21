@@ -1,38 +1,342 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  font-size: 62.5%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  color: #122c34;
+  font-family: 'Jura', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+h1 {
+  font-size: 13rem;
+  margin-bottom: 2vh;
+}
+
+h2 {
+  font-size: 6rem;
+}
+
+
+.tops {
+  background-color: #122c34;
+}
+
+nav {
+  width: 80%;
+  margin: auto;
+  height: 10vh;
+  padding: 3rem 0;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.logo {
+  flex: 1.5;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Nothing You Could Do', cursive;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.empty {
+  flex: 2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.tops ul {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  list-style: none;
+  color: #44cfcb;
 }
+
+.tops li {
+  font-size: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid transparent;
+}
+
+.tops li:hover {
+  border-bottom: 2px solid #44cfcb;
+}
+
+
+.working {
+  margin: auto;
+  background: linear-gradient(to right,#4EA5D9, #44cfcb);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 80vh;
+}
+
+.country-box {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.country-list {
+  background: white;
+  border-radius: .8rem;
+  padding: 1rem 1rem 2rem 1rem;
+  max-width: 33rem;
+  max-height: 0;
+  opacity: 0;
+  overflow-y: scroll;
+  transition: all 0.4s;
+}
+
+.country-list.active {
+  max-height: 50rem;
+  opacity: 1;
+}
+
+
+
+.country-list::-webkit-scrollbar {
+  width: 1.2rem;;
+  background: white;
+  border-radius: 0 .8rem .8rem .0;
+}
+
+.country-list::-webkit-scrollbar-thumb {
+  background: #122c34;
+  border-radius: .8rem;
+}
+
+.country-list h3 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #122c34;
+}
+
+
+.country-list ul {
+  list-style: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.country-list li {
+  padding-bottom: 0.5rem;
+}
+
+
+.currow {
+  display: flex;
+  justify-content: center;
+  height: 7rem;
+}
+
+.select-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.selected {
+  background: #122c34;
+  color: white;
+  border-radius: .8rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem;
+  transition: all 0.4s;
+}
+
+.selected:hover {
+  background: white;
+  color: #122c34
+}
+
+
+
+.options-container {
+  display: flex;
+  width: 15vh;
+  flex-direction: column;
+  position: absolute;
+  top: 0rem;
+  left: 21rem;
+  background: #122c34;
+  color: white;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.options-container.active {
+  max-height: 18.5rem;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.options-container::-webkit-scrollbar {
+  width: 1.2rem;;
+  background: #030a0c;
+  border-radius: 0 .8rem .8rem .0;
+}
+
+.options-container::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: .8rem;
+}
+
+
+.option, .selected {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.option:hover {
+  background-color: #224870;
+}
+
+.option {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.option .radio {
+  display: none;
+}
+
+.option label {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+
+
+
+/* .selected::after {
+  content: "\f0d7";
+  font-family: "Font Awesome 5 free";
+  position: absolute;
+  top: 1rem;
+  left: 10rem;
+  transition: all .4s;
+}
+
+.select-box .options-container.active + .selected::after {
+  transform: rotateX(180deg);
+
+} */
+
+
+
+
+
+
+
+
+
+
+
+input, select {
+  border: 3px solid transparent;
+  border-radius: 1rem;
+  transition: border-color .3s;
+}
+
+input {
+  margin: 0 1vh;
+  padding: .25rem;
+  width: 25rem;
+  text-align: center;
+  font-size: 4rem;
+}
+
+select {
+  padding: .3em;
+  font-size: 3.2rem;
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input:focus, select:focus {
+  border-color: #122c34;
+  outline: none;
+}
+
+input::selection, select::selection {
+  background-color: #44cfcb;
+  color: white;
+}
+
+.icons {
+  height: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fas {
+  font-size: 6rem;
+  /* transition: transform .2s ease-in-out; */
+  color: #122c34;
+  transition: color .3s;
+  cursor: pointer;
+  
+}
+
+.fas:hover {
+  color: white;
+}
+
+.fas.active {
+  animation-name: rotation;
+  animation-duration: .6s;
+  pointer-events: none;
+  color: white;
+}
+
+@keyframes rotation {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+
+footer {
+  height: 10vh;
+  background: linear-gradient(to right,#4EA5D9, #44cfcb);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mention {
+  margin-bottom: 1rem;
+}
+
