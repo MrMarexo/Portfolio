@@ -11,6 +11,7 @@ html {
 body {
   color: #122c34;
   font-family: 'Jura', sans-serif;
+  /* overflow-y: scroll; */
 }
 
 
@@ -25,54 +26,74 @@ h2 {
 }
 
 
+/********************************* Navigation ****************************/
+
 .tops {
   background-color: #122c34;
 }
 
 nav {
-  width: 80%;
+  width: 90%;
   margin: auto;
   height: 10vh;
-  padding: 3rem 0;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo {
-  flex: 1.5;
+  flex: 1;
   display: flex;
   justify-content: space-between;
   font-family: 'Nothing You Could Do', cursive;
   color: white;
 }
 
-.empty {
-  flex: 2;
-}
-
-
 .tops ul {
   display: flex;
   justify-content: space-between;
-  flex: 1;
+  flex: 1.2;
   list-style: none;
-  color: #44cfcb;
+  text-decoration: none;
 }
 
-.tops li {
+/* .tops li {
   font-size: 3rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: all 0.1s;
+} */
+
+.navlink {
+  font-size: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: all 0.1s;
+
 }
 
-.tops li:hover {
-  border-bottom: 2px solid #44cfcb;
+.navlink.active {
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
+
+.navlink:hover {
+  border-bottom: 2px solid white;
 }
 
 
-.working {
-  margin: auto;
+/********************************* Convert App****************************/
+
+/* layout */
+
+.working-space {
   background: linear-gradient(to right,#4EA5D9, #44cfcb);
   display: flex;
   justify-content: space-between;
@@ -81,29 +102,57 @@ nav {
   height: 80vh;
 }
 
+footer {
+  height: 10vh;
+  background: linear-gradient(to right,#4EA5D9, #44cfcb);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.convert-box {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 2;
+}
+
 .country-box {
   display: flex;
   justify-content: center;
+  /* width: 100%; */
+}
+
+/* Country box */
+
+.country-section-landscape {
+  display: flex;
+  justify-content: center;
   width: 100%;
+}
+
+.country-section-portrait {
+  display: none;
 }
 
 .country-list {
   background: white;
   border-radius: .8rem;
   padding: 1rem 1rem 2rem 1rem;
-  max-width: 33rem;
-  max-height: 0;
+  width: 30rem;
+  height: 0;
   opacity: 0;
   overflow-y: scroll;
   transition: all 0.4s;
 }
 
 .country-list.active {
-  max-height: 50rem;
+  height: 20rem;
   opacity: 1;
 }
-
-
 
 .country-list::-webkit-scrollbar {
   width: 1.2rem;;
@@ -112,12 +161,17 @@ nav {
 }
 
 .country-list::-webkit-scrollbar-thumb {
+  visibility: hidden;
+}
+
+.country-list:hover::-webkit-scrollbar-thumb {
   background: #122c34;
   border-radius: .8rem;
+  visibility: visible;
 }
 
 .country-list h3 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #122c34;
@@ -135,10 +189,21 @@ nav {
 }
 
 
-.currow {
+
+/* Convert box */
+
+
+.title {
   display: flex;
   justify-content: center;
-  height: 7rem;
+}
+
+.current-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* height: 7rem; */
+  width: 100%;
 }
 
 .select-box {
@@ -148,8 +213,9 @@ nav {
   width: 100%;
 }
 
-.selected {
+.selected-currency {
   background: #122c34;
+  flex-grow: 1;
   color: white;
   border-radius: .8rem;
   width: 100%;
@@ -161,7 +227,7 @@ nav {
   transition: all 0.4s;
 }
 
-.selected:hover {
+.selected-currency:hover {
   background: white;
   color: #122c34
 }
@@ -174,10 +240,10 @@ nav {
   flex-direction: column;
   position: absolute;
   top: 0rem;
-  left: 21rem;
+  left: 22rem;
   background: #122c34;
   color: white;
-  max-height: 0;
+  height: 0;
   opacity: 0;
   transition: all 0.4s;
   border-radius: 0.8rem;
@@ -185,7 +251,7 @@ nav {
 }
 
 .options-container.active {
-  max-height: 18.5rem;
+  height: 17rem;
   opacity: 1;
   overflow-y: scroll;
 }
@@ -202,7 +268,7 @@ nav {
 }
 
 
-.option, .selected {
+.option, .selected-currency {
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 4rem;
@@ -219,7 +285,7 @@ nav {
   width: 100%;
 }
 
-.option .radio {
+.radio {
   display: none;
 }
 
@@ -230,66 +296,30 @@ nav {
 
 
 
-
-/* .selected::after {
-  content: "\f0d7";
-  font-family: "Font Awesome 5 free";
-  position: absolute;
-  top: 1rem;
-  left: 10rem;
-  transition: all .4s;
-}
-
-.select-box .options-container.active + .selected::after {
-  transform: rotateX(180deg);
-
-} */
-
-
-
-
-
-
-
-
-
-
-
-input, select {
+.value-input {
   border: 3px solid transparent;
   border-radius: 1rem;
   transition: border-color .3s;
-}
-
-input {
-  margin: 0 1vh;
+  margin: 0 1vh 0 0;
   padding: .25rem;
   width: 25rem;
   text-align: center;
   font-size: 4rem;
 }
 
-select {
-  padding: .3em;
-  font-size: 3.2rem;
-  /* for Firefox */
-  -moz-appearance: none;
-  /* for Chrome */
-  -webkit-appearance: none;
-}
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.value-input::-webkit-outer-spin-button,
+.value-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input:focus, select:focus {
+.value-input:focus, select:focus {
   border-color: #122c34;
   outline: none;
 }
 
-input::selection, select::selection {
+.value-input::selection, select::selection {
   background-color: #44cfcb;
   color: white;
 }
@@ -303,7 +333,6 @@ input::selection, select::selection {
 
 .fas {
   font-size: 6rem;
-  /* transition: transform .2s ease-in-out; */
   color: #122c34;
   transition: color .3s;
   cursor: pointer;
@@ -327,16 +356,279 @@ input::selection, select::selection {
 }
 
 
-footer {
-  height: 10vh;
-  background: linear-gradient(to right,#4EA5D9, #44cfcb);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
+
 
 .mention {
   margin-bottom: 1rem;
 }
+
+
+
+/********************************* Chuck ****************************/
+
+.chuck {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+    "img title title"
+    "img note note"
+    "img note note"
+    "btn note note";
+  font-family: 'Holtwood One SC', serif;
+  height: 90vh;
+  width: 100%;
+}
+
+.chuck-img {
+  grid-area: img;
+}
+
+.chuck-btn {
+  grid-area: btn;
+}
+
+.chuck-title {
+  grid-area: title;
+  display: flex;
+  justify-content: center;  
+}
+
+
+
+.chuck-note {
+  grid-area: note;
+  display: flex;
+  justify-content: center;
+  background: white;
+  border: 1rem solid #8C3D2B;
+  overflow-y: scroll;
+  word-wrap: break-word;
+  transition: all .4s;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+
+.chuck-note.active {
+  border: 1rem dashed #8C3D2B;
+}
+
+.chuck-note::-webkit-scrollbar {
+  width: 1.2rem;;
+  background: white;
+  border-radius: 0 .8rem .8rem .0;
+}
+
+.chuck-note::-webkit-scrollbar-thumb {
+  visibility: hidden;
+}
+
+.almighty {
+  font-size: .5em;
+  font-style: italic;
+}
+
+.joke {
+  font-size: 3rem;
+  margin: 2rem;
+  opacity: 0;
+  transition: opacity .4s;
+}
+
+.joke.active {
+  opacity: 1;
+}
+
+.chuck-himself {
+  max-height: 70vh;
+  width: auto;
+}
+
+
+.chutton {
+  font-size: 5rem;
+  font-family: 'Holtwood One SC', serif;
+  color: #122c34;
+  border: 1rem solid #122c34;
+  padding: 2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  background: #8C3D2B;
+  transition: all .1s;
+  margin: 1rem;
+}
+
+.chutton:hover {
+  color: white;
+  border-color: #8C3D2B;
+}
+
+.chutton:active {
+  border-color: #122c34;
+}
+
+.chutton:focus {
+  outline: none;
+}
+
+
+
+
+
+
+@media screen and (max-width: 1172px) {
+
+}
+
+
+
+
+@media screen and (max-width: 1250px) {
+  .tops ul {
+    flex: 1.4;
+  }
+
+  .navlink {
+    font-size: 2rem;
+  }
+
+  .logo h2{
+    font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .country-section-landscape {
+    display: none;
+  }
+
+  .country-section-portrait {
+    width: 100%;
+    height: 22rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .working-space {
+    justify-content: center;
+  }
+
+  .options-container {
+    left: 18rem;
+  }
+
+  .convert-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+  }
+
+  .country-list {
+    width: 21.2rem;
+  }
+
+  .country-list h3 {
+    font-size: 1.6rem;
+  }
+
+  .country-list ul {
+    font-size: 1.4rem;
+  }
+
+  .title h1 {
+    font-size: 12rem;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .options-container {
+    top: 6.5rem;
+    left: 2.5rem;
+  }
+
+  .icons {
+    height: 20rem;
+  }
+
+  
+}
+
+@media screen and (max-width: 600px) {
+  .navlink {
+    font-size: 1.7rem;
+  }
+
+  .logo h2 {
+    font-size: 3rem;
+  }
+
+  .title h1 {
+    font-size: 8rem;
+  }
+
+  .options-container {
+    width: 9rem;
+    top: 5rem;
+    left: 0;
+  }
+
+  .country-list {
+    width: 15rem;
+  }
+
+  .option label, .selected-currency, .value-input {
+    font-size: 3rem;
+  }
+
+  
+}
+
+@media screen and (max-width: 430px) {
+  .navlink {
+    font-size: 1.5rem;
+  }
+
+  .logo h2 {
+    font-size: 2.6rem;
+  }
+
+  
+  
+}
+
+
+@media screen and (max-height: 845px) {
+  .title {
+    display: none;
+  }
+
+  .icons {
+    height: 10rem;
+  }
+
+  .fas {
+    font-size: 4rem;
+  }
+
+  .options-container {
+    width: 6rem;
+    top: 4rem;
+  }
+
+  .options-container.active {
+    height: 8rem;
+  }
+
+  .option label, .selected-currency, .value-input {
+    font-size: 2rem;
+  }
+  
+}
+
+
+
+
 

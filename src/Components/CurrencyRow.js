@@ -9,10 +9,10 @@ export default function CurrencyRow(props) {
                 {props.curOptions.map(el => <option key={el} value={el}>{el}</option>)}        
             </select>
         </div>*/}
-        <div className="currow">
-            <input type="number" value={props.amount} onChange={props.changeValue}/>
+        <div className="current-row">
+            <input className="value-input" type="number" value={props.amount} onChange={props.changeValue}/>
             <div className="select-box">
-                <div className="selected" onClick={props.drop}>{props.value}</div>
+                <div className="selected-currency" onClick={props.drop}>{props.value}</div>
                 <div className={props.shouldDrop ? "options-container active" : "options-container"}>
                     {props.curOptions.map(el => (
                         <div className="option" key={el + props.spec}>
