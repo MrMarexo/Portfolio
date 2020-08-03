@@ -43,7 +43,7 @@ function Convert() {
       .then(data => countriesData = data)
       .catch(err => {
         console.log(err);
-        window.alert("Ooops! SOmething's wrong. Please reload the page.")})
+        window.alert("Ooops! Something's wrong. Please reload the page.")})
     fetch(CONVERT_URL)
       .then(res => res.json())
       .then(data => {
@@ -57,7 +57,7 @@ function Convert() {
       })
       .catch(err => {
         console.log(err);
-        window.alert("Ooops! SOmething's wrong. Please reload the page.")})
+        window.alert("Ooops! Something's wrong. Please reload the page.")})
     },[]);
 
 
@@ -70,7 +70,7 @@ function Convert() {
       })
       .catch(err => {
         console.log(err);
-        window.alert("Ooops! SOmething's wrong. Please reload the page.")})
+        window.alert("Ooops! Something's wrong. Please reload the page.")})
       findCountries();
     }
     
